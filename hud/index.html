@@ -67,7 +67,7 @@
         }
 
         function updateSessionHUD(date, players, ping, totalPlayTime, playTime) {
-            let iframe = document.querySelector("iframe[src='SessionHUD/index.html']");
+            let iframe = document.querySelector("iframe[src='sessionhud/index.html']");
 
             iframe.contentWindow.postMessage({
                 date: date,
@@ -80,7 +80,7 @@
         }
 
         function renameFromArrayList(value, newValue) {
-            let iframe = document.querySelector("iframe[src='ArrayList/index.html']");
+            let iframe = document.querySelector("iframe[src='arraylist/index.html']");
 
             iframe.contentWindow.postMessage({
                 type: "rename",
@@ -90,7 +90,7 @@
         }
 
         function removeFromArrayList(value) {
-            let iframe = document.querySelector("iframe[src='ArrayList/index.html']");
+            let iframe = document.querySelector("iframe[src='arraylist/index.html']");
 
             iframe.contentWindow.postMessage({
                 type: "remove",
@@ -99,7 +99,7 @@
         }
 
         function addToArrayList(value) {
-            let iframe = document.querySelector("iframe[src='ArrayList/index.html']");
+            let iframe = document.querySelector("iframe[src='arraylist/index.html']");
 
             iframe.contentWindow.postMessage({
                 type: "add",
