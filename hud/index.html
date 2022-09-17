@@ -80,7 +80,7 @@
         }
 
         function renameFromArrayList(value, newValue) {
-            let iframe = document.querySelector("iframe[src='/hud/sessionhud/']");
+            let iframe = document.querySelector("iframe[src='sessionhud/index.html']");
 
             iframe.contentWindow.postMessage({
                 type: "rename",
@@ -90,7 +90,7 @@
         }
 
         function removeFromArrayList(value) {
-            let iframe = document.querySelector("iframe[src='/hud/arraylist/'']");
+            let iframe = document.querySelector("iframe[src='arraylist/index.html'']");
 
             iframe.contentWindow.postMessage({
                 type: "remove",
@@ -99,7 +99,7 @@
         }
 
         function addToArrayList(value) {
-            let iframe = document.querySelector("iframe[src='/hud/arraylist/']");
+            let iframe = document.querySelector("iframe[src='arraylist/index.html']");
 
             iframe.contentWindow.postMessage({
                 type: "add",
