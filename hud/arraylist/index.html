@@ -8,7 +8,7 @@
     <title>ArrayList</title>
 </head>
 <body>
-    <div class="rightSide"></div>
+    <div class="rightSide" id="modules"></div>
 
     <script>
         let array = {};
@@ -76,20 +76,19 @@
                 clearInterval();
             }, 200);
 
-            sort(true, value, true);
             delete array[value];
         }
 
-        function sort(animate, animate1, out) {
-            let array = document.querySelectorAll(".rightSide p");
-            array = Object.values(array).sort((a, b) => {
-                return -((a.offsetWidth+1) - (b.offsetWidth+1));
-            });
-            array.forEach(element => {
-                if(animate) {
-                    if(animate1 === undefined) element.style.animation = !out ? "slideInRight 0.4s" : "slideOutRight 0.9s";
+        async function sort(animate, animate1, out) {
+            let array = document.getElementById("modules");
+
+            Object.values(array.children).sort((a, b) => {
+                return -((a.offsetWidth + 1) - (b.offsetWidth + 1));
+            }).forEach((element) => {
+                if (animate && out) {
+                    if (animate1 === undefined) element.style.animation = !out ? "slideInRight 0.4s" : "slideOutRight 0.9s";
                     else {
-                        if(element.innerHTML === animate1) element.style.animation = !out ? "slideInRight 0.4s" : "slideOutRight 0.9s";
+                        if (element.innerHTML === animate1) element.style.animation = !out ? "slideInRight 0.4s" : "slideOutRight 0.9s";
                         else element.style.animation = "";
                     }
                 } else {
