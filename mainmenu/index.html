@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css?3">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+        integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"
+        defer></script>
+
+</head>
+
+<body>
+    <div class="background-video">
+        <video playsinline autoplay loop muted src="https://github.com/ShatteredDisk/rickroll/raw/master/rickroll.mp4"></video>
+    </div>
+
+    <div class="floating-name">
+        <img onclick="
+        window.cefQuery({
+            request: 'AltManagerScreen'
+        })
+        " alt="To be set"/>
+        <p>Your Name</p>
+    </div>
+
+    <div class="box">
+        <h1 class="box--title">Slice</h1>
+        <div class="box--button-container">
+            <button onclick="
+            window.cefQuery({
+                request: 'SinglePlayerScreen'
+            })
+            ">Singleplayer</button>
+            <button onclick="
+            window.cefQuery({
+                request: 'MultiPlayerScreen'
+            })
+            ">Multiplayer</button>
+            <button onclick="
+            window.cefQuery({
+                request: 'AltManagerScreen'
+            })
+            ">Alt Manager</button>
+            <button onclick="
+            window.cefQuery({
+                request: 'VersionScreen'
+            })
+            ">Version</button>
+            <button>Click GUI</button>
+            <button onclick="
+            window.cefQuery({
+                request: 'OptionsScreen'
+            })
+            ">Settings</button>
+            <button onclick="
+            window.cefQuery({
+                request: 'Exit'
+            })
+            ">Exit</button>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

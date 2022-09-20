@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+.background-video>video {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    object-fit: cover;
+}
+
+html,
+body {
+    background: #282828;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    overflow: hidden;
+}
+
+button {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 15px !important;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #00000050;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    height: 30%;
+    width: 200%;
+    cursor: pointer;
+    outline: none;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+button:hover {
+    background-color: #FFD70080;
+    -webkit-backdrop-filter: brightness(1.2);
+    box-shadow: 0px 15px 20px rgba(66, 66, 66, 0.4);
+    color: #fff;
+    backdrop-filter: blur(10px) brightness(1.2);
+}
+
+button:active {
+    transform: translateY(1%) translateX(-50%);
+}
+
+.box {
+    position: fixed;
+    background: #00000075;
+    height: 80%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 100px;
+    -webkit-backdrop-filter: blue(10px);
+    backdrop-filter: blur(10px) brightness(1.2);
+    transition: all 1s;
+}
+
+@media only screen and (max-width: 900px) and (max-device-width: 900px) {
+    .box {
+        left: 0%;
+        width: 100%;
+        height: 90%;
+        top: 5%;
+        border-radius: 10px;
+    }
+}
+
+.box--title {
+    position: absolute;
+    top: -7.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: whitesmoke;
+    font-weight: lighter;
+    font-size: 8em;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.box--button-container {
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;  
+    position: absolute;
+    top: 22.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: black;
+}
+
+.floating-name {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 25px;
+    left: 25px;
+}
+
+.floating-name > * {
+    display: inline;
+}
+
+.floating-name > *:not(:last-child) {
+    height: 50%;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.floating-name > p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-125%);
+    left: 125%;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
