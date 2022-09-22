@@ -1,6 +1,6 @@
 const sourceElem = document.querySelector('video');
 const ENDPOINT = "https://assets.sliceclient.com/mainmenubackground/";
-const backgrounds = ["Spaceman.webm", "Zero Two.webm"];
+const backgrounds = ["Spaceman.webm", "Zero Two.webm", "Touhou - Bad Apple.webm"];
 const urlParams = new URLSearchParams(window.location.search);
 const imageElem = document.querySelector('img');
 const pElem = document.querySelector('p');
