@@ -34,6 +34,8 @@
             }
         });
 
+        document.querySelector(".box").style.width = document.querySelector(".box .bottomText").offsetWidth + 20 + "px";
+
         document.querySelector(".timerLine").addEventListener("animationend", function(){
             document.querySelector(".box").style.animation = "out 2s";
         });
@@ -59,8 +61,7 @@
         }
 
         function setupBottom() {
-            document.querySelector(".bottomText").style.left = "calc(50% - " + document.querySelector(".bottomText").offsetWidth / 2 + "px)";
-            document.querySelector(".box").style.width = document.querySelector(".bottomText").offsetWidth + "px";
+            document.querySelector(".bottomText").style.left = "calc(50% - " + (document.querySelector(".bottomText").offsetWidth/2) + "px)";
         }
     </script>
 </body>

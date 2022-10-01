@@ -27,7 +27,7 @@
         window.onmessage = function(e) {
             let data = e.data;
             let progress = document.querySelector("progress");
-            progress.value = data.health.toFixed(0);
+            progress.value = data.health/*.toFixed(0);*/
             progress.max = data.max;
             let img = document.querySelector("img");
             img.src = "http://cravatar.eu/helmavatar/" + data.name.replace(/ /g, '') + "/128";
