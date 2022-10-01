@@ -59,7 +59,8 @@
         }
 
         function setupBottom() {
-            document.querySelector(".bottomText").style.left = "calc(50% - " + (document.querySelector(".bottomText").offsetWidth/2) + "px)";
+            document.querySelector(".bottomText").style.left = "calc(50% - " + document.querySelector(".bottomText").offsetWidth / 2 + "px)";
+            document.querySelector(".box").style.width = document.querySelector(".bottomText").offsetWidth + "px";
         }
     </script>
 </body>
