@@ -27,13 +27,18 @@
         window.onmessage = function(e) {
             let data = e.data;
             let progress = document.querySelector("progress");
-            progress.value = data.health/*.toFixed(0);*/
+            progress.value = toFixed(data.health, 0);
             progress.max = data.max;
             let img = document.querySelector("img");
             img.src = "http://cravatar.eu/helmavatar/" + data.name.replace(/ /g, '') + "/128";
             let h2 = document.querySelector("h2");
             h2.innerHTML = data.name;
         };
+
+        function toFixed(value, precision) {
+            var power = Math.pow(10, precision || 0);
+            return String(Math.round(value * power) / power);
+        }
     </script>
 </body>
 
