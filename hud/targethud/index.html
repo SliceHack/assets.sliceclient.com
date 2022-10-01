@@ -27,6 +27,9 @@
         window.onmessage = function(e) {
             let data = e.data;
             let progress = document.querySelector("progress");
+
+            if(isNaN(data.health)) return;
+
             progress.value = toFixed(data.health, 0);
             progress.max = data.max;
             let img = document.querySelector("img");
