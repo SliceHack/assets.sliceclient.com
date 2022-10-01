@@ -67,7 +67,7 @@
         }
 
         function updateSessionHUD(date, players, ping, totalPlayTime, playTime) {
-            let iframe = document.querySelector("iframe[src='hud/sessionhud/']");
+            let iframe = document.querySelector("iframe[src='sessionhud/index.html']");
 
             iframe.contentWindow.postMessage({
                 date: date,
@@ -80,7 +80,7 @@
         }
 
         function renameFromArrayList(value, newValue) {
-            let iframe = document.querySelector("iframe[src='sessionhud/index.html']");
+            let iframe = document.querySelector("iframe[src='targethud/index.html']");
 
             iframe.contentWindow.postMessage({
                 type: "rename",
