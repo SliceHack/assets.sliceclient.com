@@ -33,11 +33,10 @@
             progress.value = data.health.toFixed(0);
             progress.max = data.max;
             let img = document.querySelector("img");
-            img.src = "http://cravatar.eu/helmavatar/" + data.name.replace(/ /g, '') + "/128";
+            img.src = "https://cravatar.eu/helmavatar/" + data.name.replace(/ /g, '') + "/128";
             let h2 = document.querySelector("h2");
             h2.innerHTML = data.name;
         };
-
     </script>
 </body>
 
