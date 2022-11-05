@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+main {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #00000075;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 800px;
+    height: calc(100vh - 50px);
+    border-radius: 30px;
+    -webkit-backdrop-filter: blur(10px) brightness(1.2);
+    backdrop-filter: blur(10px) brightness(1.2);
+}
+
+html,
+body {
+    background: #282828;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    overflow: hidden;
+}
+
+.floating-name {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 25px;
+    left: 25px;
+}
+
+.floating-name>* {
+    display: inline;
+}
+
+.floating-name>*:not(:last-child) {
+    height: 50%;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.floating-name>p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-125%);
+    left: 125%;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.card {
+    margin: 25px;
+    border-radius: 30px;
+    border-color: #fff;
+    border-width: 2px;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.5s ease-in-out;
+    transform: skew(90deg) scale(0);
+}
+
+.card img {
+    margin-top: 10px;
+    width: 75px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.card button {
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 30px;
+    border-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    background-color: transparent;
+    color: #fff;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 6px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    filter: brightness(0.5);
+    border-radius: 10px;
+    width: 3px;
+    height: 6px;
+}
+
+.current {
+    border: 2px solid gold;
+}
+
+main > button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 30px;
+    border-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    background-color: transparent;
+    color: #fff;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: calc(100% - 50px);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: #00000075;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.5s ease-in-out;
+    color: #fff;
+}
+
+.modal input[type="password"], .modal input[type="email"] {
+    border-radius: 30px;
+    border-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    background-color: transparent;
+    color: #000;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: calc(100% - 50px);
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.modal button[type="submit"] {
+    border-radius: 30px;
+    border-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    background-color: transparent;
+    color: #fff;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: calc(100%);
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background-color: palevioletred;
+    border-radius: 30px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.5s ease-in-out;
+}

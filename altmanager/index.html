@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <template>
+        <div class="card">
+            <img src="https://minotar.net/helm/God_Mode/50.png" alt="">
+            <h1>God_Mode</h1>
+            <!-- login button and delete button -->
+            <button class="login">Login</button>
+            <button class="delete">Delete</button>
+        </div>
+    </template>
+
+
+    <div class="floating-name">
+        <img alt="To be set" src="https://minotar.net/helm/God_Mode/50.png">
+        <p>God_Mode</p>
+    </div>
+    <main>
+        <button>Add Account</button>
+        <div class="card-container"></div>
+    </main>
+
+    <!-- modal form -->
+    <div class="modal">
+        <div class="modal-content">
+            <h1>Add Account</h1>
+            <form action="">
+                <label for="username">Username</label>
+                <input type="email" name="email" id="email" title="email">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <button type="submit">Add Account</button>
+            </form>
+        </div>
+
+    <script>
+
+        let currentAccount = null;
+
+        function setCurrentAccount(username) {
+            try {
+                document.querySelector("#" + currentAccount).classList.remove("current");   
+            } catch(_){}
+            currentAccount = username;
+            document.querySelector(".floating-name img").src = `https://minotar.net/helm/${username}/50.png`;
+            document.querySelector(".floating-name p").innerText = username;
+            try {
+                document.querySelector("#" + username).classList.add("current");
+                // move to top
+                document.querySelector("#" + username).parentElement.prepend(document.querySelector("#" + username));
+            } catch (_) {}
+        }
+
+        function addAccount(username) {
+            // check if account already exists
+            if (document.querySelector("#" + username)) {
+                setCurrentAccount(username);
+                return;
+            }
+            // fly in from bottom
+            const template = document.querySelector("template");
+            const clone = template.content.cloneNode(true);
+            clone.querySelector(".card").id = username;
+            clone.querySelector("h1").innerText = username;
+            clone.querySelector("img").src = `https://minotar.net/helm/${username}/50.png`;
+            clone.querySelector(".login").addEventListener("click", () => {
+                setCurrentAccount(username);
+            });
+            clone.querySelector(".login").addEventListener("click", () => {
+                setCurrentAccount(username);
+            });
+            clone.querySelector(".delete").addEventListener("click", () => {
+                document.querySelector("#" + username).style.transform = "skew(90deg) scale(0)";
+                setTimeout(() => {
+                    document.querySelector("#" + username).remove();
+                }, 500);
+            });
+            // append to top of card container
+            document.querySelector(".card-container").prepend(clone);
+            try {
+                document.querySelector("#" + currentAccount).parentElement.prepend(document.querySelector("#" + currentAccount));
+            } catch (_) {}
+            window.requestAnimationFrame(() => {
+                document.querySelector("#" + username).style.transform = "skew(180deg) scale(1)";
+            });
+        }
+
+        addAccount("God_Mode");
+        addAccount("malecs");
+        addAccount("jeb_");
+
+        setCurrentAccount("God_Mode");
+
+        // modal
+        const modal = document.querySelector(".modal");
+        const btn = document.querySelector("main > button");
+
+        btn.onclick = (e) => {
+            modal.style.display = "flex";
+        }
+        
+        modal.querySelector("form").onsubmit = (e) => {
+            e.preventDefault();
+            const email = document.querySelector("#email").value;
+            const password = document.querySelector("#password").value;
+            modal.style.display = "none";
+            addAccount("Test");
+        }
+    </script>
+</body>
+
+</html>
