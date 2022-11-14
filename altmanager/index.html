@@ -62,7 +62,7 @@
                 } catch (_) { }
             }
 
-            function addAccount(username) {
+            function addAccount(username, email, password) {
                 // check if account already exists
                 if (document.querySelector("#" + username)) {
                     setCurrentAccount(username);
@@ -75,10 +75,11 @@
                 clone.querySelector("h1").innerText = username;
                 clone.querySelector("img").src = `https://minotar.net/helm/${username}/50.png`;
                 clone.querySelector(".login").addEventListener("click", () => {
-                    setCurrentAccount(username);
-                });
-                clone.querySelector(".login").addEventListener("click", () => {
-                    setCurrentAccount(username);
+                    window.cefQuery({
+                        request: `RealLogin ${email}:${password}`,
+                        onSuccess: (response) => {},
+                        onFailure: (error_code, error_message) => {}
+                    });
                 });
                 clone.querySelector(".delete").addEventListener("click", () => {
                     document.querySelector("#" + username).style.transform = "skew(90deg) scale(0)";
