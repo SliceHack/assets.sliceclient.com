@@ -44,73 +44,79 @@
             </form>
         </div>
 
-    <script>
+        <script>
 
-        let currentAccount = null;
+            let currentAccount = null;
 
-        function setCurrentAccount(username) {
-            try {
-                document.querySelector("#" + currentAccount).classList.remove("current");   
-            } catch(_){}
-            currentAccount = username;
-            document.querySelector(".floating-name img").src = `https://minotar.net/helm/${username}/50.png`;
-            document.querySelector(".floating-name p").innerText = username;
-            try {
-                document.querySelector("#" + username).classList.add("current");
-                // move to top
-                document.querySelector("#" + username).parentElement.prepend(document.querySelector("#" + username));
-            } catch (_) {}
-        }
-
-        function addAccount(username) {
-            // check if account already exists
-            if (document.querySelector("#" + username)) {
-                setCurrentAccount(username);
-                return;
+            function setCurrentAccount(username) {
+                try {
+                    document.querySelector("#" + currentAccount).classList.remove("current");
+                } catch (_) { }
+                currentAccount = username;
+                document.querySelector(".floating-name img").src = `https://minotar.net/helm/${username}/50.png`;
+                document.querySelector(".floating-name p").innerText = username;
+                try {
+                    document.querySelector("#" + username).classList.add("current");
+                    // move to top
+                    document.querySelector("#" + username).parentElement.prepend(document.querySelector("#" + username));
+                } catch (_) { }
             }
-            // fly in from bottom
-            const template = document.querySelector("template");
-            const clone = template.content.cloneNode(true);
-            clone.querySelector(".card").id = username;
-            clone.querySelector("h1").innerText = username;
-            clone.querySelector("img").src = `https://minotar.net/helm/${username}/50.png`;
-            clone.querySelector(".login").addEventListener("click", () => {
-                setCurrentAccount(username);
-            });
-            clone.querySelector(".login").addEventListener("click", () => {
-                setCurrentAccount(username);
-            });
-            clone.querySelector(".delete").addEventListener("click", () => {
-                document.querySelector("#" + username).style.transform = "skew(90deg) scale(0)";
-                setTimeout(() => {
-                    document.querySelector("#" + username).remove();
-                }, 500);
-            });
-            // append to top of card container
-            document.querySelector(".card-container").prepend(clone);
-            try {
-                document.querySelector("#" + currentAccount).parentElement.prepend(document.querySelector("#" + currentAccount));
-            } catch (_) {}
-            window.requestAnimationFrame(() => {
-                document.querySelector("#" + username).style.transform = "skew(180deg) scale(1)";
-            });
-        }
 
-        // modal
-        const modal = document.querySelector(".modal");
-        const btn = document.querySelector("main > button");
+            function addAccount(username) {
+                // check if account already exists
+                if (document.querySelector("#" + username)) {
+                    setCurrentAccount(username);
+                    return;
+                }
+                // fly in from bottom
+                const template = document.querySelector("template");
+                const clone = template.content.cloneNode(true);
+                clone.querySelector(".card").id = username;
+                clone.querySelector("h1").innerText = username;
+                clone.querySelector("img").src = `https://minotar.net/helm/${username}/50.png`;
+                clone.querySelector(".login").addEventListener("click", () => {
+                    setCurrentAccount(username);
+                });
+                clone.querySelector(".login").addEventListener("click", () => {
+                    setCurrentAccount(username);
+                });
+                clone.querySelector(".delete").addEventListener("click", () => {
+                    document.querySelector("#" + username).style.transform = "skew(90deg) scale(0)";
+                    setTimeout(() => {
+                        document.querySelector("#" + username).remove();
+                    }, 500);
+                });
+                // append to top of card container
+                document.querySelector(".card-container").prepend(clone);
+                try {
+                    document.querySelector("#" + currentAccount).parentElement.prepend(document.querySelector("#" + currentAccount));
+                } catch (_) { }
+                window.requestAnimationFrame(() => {
+                    document.querySelector("#" + username).style.transform = "skew(180deg) scale(1)";
+                });
+            }
 
-        btn.onclick = (e) => {
-            modal.style.display = "flex";
-        }
-        
-        modal.querySelector("form").onsubmit = (e) => {
-            e.preventDefault();
-            const email = document.querySelector("#email").value;
-            const password = document.querySelector("#password").value;
-            modal.style.display = "none";
-        }
-    </script>
+            // modal
+            const modal = document.querySelector(".modal");
+            const btn = document.querySelector("main > button");
+
+            btn.onclick = (e) => {
+                modal.style.display = "flex";
+            }
+
+            modal.querySelector("form").onsubmit = (e) => {
+                e.preventDefault();
+                const email = document.querySelector("#email").value;
+                const password = document.querySelector("#password").value;
+                modal.style.display = "none";
+                window.cefQuery({
+                    request: 'Login ' + email + ":" + password,
+                    persistent: false,
+                    onSuccess: function (response) { },
+                    onFailure: function (error_code, error_message) { }
+                });
+            }
+        </script>
 </body>
 
 </html>
