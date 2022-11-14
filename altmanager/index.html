@@ -117,6 +117,13 @@
                     onFailure: function (error_code, error_message) { }
                 });
             }
+
+            window.cefQuery({
+                request: 'AltManagerReady',
+                persistent: false,
+                onSuccess: function (response) {},
+                onFailure: function (error_code, error_message) {}
+            });
         </script>
 </body>
 
