@@ -16,6 +16,10 @@
             display: none;
         }
 
+        * {
+            color-scheme: dark;
+        }
+
         body {
             -webkit-user-select: none;
         }
@@ -214,10 +218,7 @@
             document.querySelector(`.${category.toLowerCase()}`).appendChild(module);
             module.onclick = function () { showModule(name) };
             module.querySelector("input").onchange = function() {
-                window.cefQuery({
-                    request: `${name.replaceAll(" ", "")} ${this.checked ? "true" : "false"}`,
-                    persistent: false,
-                });
+                client.getModuleManager().getModule(name.replaceAll(" ", "")).setEnabled(this.checked);
             }
             Modules[category][name] = {
                 enabled: false,
@@ -397,41 +398,24 @@
             switch (type) {
                 case "BooleanValue":
                     ModuleLocation[name].settings[setting].value = e.target.checked;
-                    window.cefQuery({
-                        request: name + " " + setting.replaceAll(" ", "") + " " + e.target.checked,
-                        persistent: false,
-                    });
+                    client.getModuleManager().getModule(name).getSetting(setting.replaceAll(" ", "")).setValue(e.target.checked)
                     showModule(name);
                     break;
                 case "NumberValue":
                     ModuleLocation[name].settings[setting].value = parseFloat(e.target.value);
-                    window.cefQuery({
-                        request: name + " " + setting.replaceAll(" ", "") + " " + e.target.value,
-                        persistent: false,
-                    });
+                    client.getModuleManager().getModule(name).getSetting(setting.replaceAll(" ", "")).setValue(parseFloat(e.target.value))
                     showModule(name);
                     break;
                 case "ModeValue":
                     ModuleLocation[name].settings[setting].value = e.target.options[e.target.selectedIndex].text;
-                    window.cefQuery({
-                        request: name + " " + setting.replaceAll(" ", "") + " " + e.target.options[e.target.selectedIndex].text,
-                        persistent: false,
-                    });
+                    client.getModuleManager().getModule(name).getSetting(setting.replaceAll(" ", "")).setValue(e.target.options[e.target.selectedIndex].text)
                     showModule(name);
                     break;
             }
         });
 
         document.querySelector("#boxheader > div > span:nth-child(5)").addEventListener("click", () => {
-            window.cefQuery({
-                request: "CloseGui",
-                persistent: false,
-            });
-        });
-
-        window.cefQuery({
-            request: 'Init',
-            persistent: false,
+            client.closeGui();
         });
     </script>
 
