@@ -218,7 +218,7 @@
             document.querySelector(`.${category.toLowerCase()}`).appendChild(module);
             module.onclick = function () { showModule(name) };
             module.querySelector("input").onchange = function() {
-                client.getModuleManager().getModule(name.replaceAll(" ", "")).setEnabled(this.checked);
+                client.setEnabled(name.replaceAll(" ", ""), this.checked);
             }
             Modules[category][name] = {
                 enabled: false,
@@ -398,17 +398,17 @@
             switch (type) {
                 case "BooleanValue":
                     ModuleLocation[name].settings[setting].value = e.target.checked;
-                    client.getModuleManager().getModule(name).getSetting(setting.replaceAll(" ", "")).setValue(e.target.checked)
+                    client.setValue(name, setting.replaceAll(" ", ""), e.target.checked);
                     showModule(name);
                     break;
                 case "NumberValue":
                     ModuleLocation[name].settings[setting].value = parseFloat(e.target.value);
-                    client.getModuleManager().getModule(name).getSetting(setting.replaceAll(" ", "")).setValue(parseFloat(e.target.value))
+                    client.setValue(name, setting.replaceAll(" ", ""), parseFloat(e.target.value));
                     showModule(name);
                     break;
                 case "ModeValue":
                     ModuleLocation[name].settings[setting].value = e.target.options[e.target.selectedIndex].text;
-                    client.getModuleManager().getModule(name).getSetting(setting.replaceAll(" ", "")).setValue(e.target.options[e.target.selectedIndex].text)
+                    client.setValue(name, setting.replaceAll(" ", ""), e.target.options[e.target.selectedIndex].text);
                     showModule(name);
                     break;
             }
