@@ -33,14 +33,10 @@
         <h1 class="box--title">Slice</h1>
         <div class="box--button-container">
             <button onclick="
-            window.cefQuery({
-                request: 'SinglePlayerScreen'
-            })
+                client.displaySinglePlayerMenu();
             ">Singleplayer</button>
             <button onclick="
-            window.cefQuery({
-                request: 'MultiPlayerScreen'
-            })
+                client.displayMultiplayerMenu()
             ">Multiplayer</button>
             <button onclick="
             window.cefQuery({
@@ -48,20 +44,14 @@
             })
             ">Alt Manager</button>
             <button onclick="
-            window.cefQuery({
-                request: 'VersionScreen'
-            })
+                client.displayVersion()
             ">Version</button>
             <button>Click GUI</button>
             <button onclick="
-            window.cefQuery({
-                request: 'OptionsScreen'
-            })
+                client.displayOptions()
             ">Settings</button>
             <button onclick="
-            window.cefQuery({
-                request: 'Exit'
-            })
+                client.exit()
             ">Exit</button>
         </div>
     </div>
