@@ -21,38 +21,20 @@
 <!--    </div>-->
 
     <div class="floating-name">
-        <img onclick="
-        window.cefQuery({
-            request: 'AltManagerScreen'
-        })
-        " alt="To be set"/>
+        <img onclick="" alt="To be set"/>
         <p>Your Name</p>
     </div>
 
     <div class="box">
         <h1 class="box--title">Slice</h1>
         <div class="box--button-container">
-            <button onclick="
-                client.displaySinglePlayerMenu();
-            ">Singleplayer</button>
-            <button onclick="
-                client.displayMultiplayerMenu()
-            ">Multiplayer</button>
-            <button onclick="
-            window.cefQuery({
-                request: 'AltManagerScreen'
-            })
-            ">Alt Manager</button>
-            <button onclick="
-                client.displayVersion()
-            ">Version</button>
+            <button onclick="client.displaySinglePlayerMenu();">Singleplayer</button>
+            <button onclick="client.displayMultiplayerMenu()">Multiplayer</button>
+            <button onclick="client.displayAlt()">Alt Manager</button>
+            <button onclick="client.displayVersion()">Version</button>
             <button>Click GUI</button>
-            <button onclick="
-                client.displayOptions()
-            ">Settings</button>
-            <button onclick="
-                client.exit()
-            ">Exit</button>
+            <button onclick="client.displayOptions()">Settings</button>
+            <button onclick="client.exit()">Exit</button>
         </div>
     </div>
     <script src="background.js"></script>

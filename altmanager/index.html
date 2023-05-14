@@ -75,11 +75,7 @@
                 clone.querySelector("h1").innerText = username;
                 clone.querySelector("img").src = `https://minotar.net/helm/${username}/50.png`;
                 clone.querySelector(".login").addEventListener("click", () => {
-                    window.cefQuery({
-                        request: `RealLogin ${email}:${password}`,
-                        onSuccess: (response) => {},
-                        onFailure: (error_code, error_message) => {}
-                    });
+                    client.realLoginMicrosoft(email, password);
                 });
                 clone.querySelector(".delete").addEventListener("click", () => {
                     document.querySelector("#" + username).style.transform = "skew(90deg) scale(0)";
@@ -110,20 +106,8 @@
                 const email = document.querySelector("#email").value;
                 const password = document.querySelector("#password").value;
                 modal.style.display = "none";
-                window.cefQuery({
-                    request: 'Login ' + email + ":" + password,
-                    persistent: false,
-                    onSuccess: function (response) { },
-                    onFailure: function (error_code, error_message) { }
-                });
+                client.loginMicrosoft(email, password);
             }
-
-            window.cefQuery({
-                request: 'AltManagerReady',
-                persistent: false,
-                onSuccess: function (response) {},
-                onFailure: function (error_code, error_message) {}
-            });
         </script>
 </body>
 
