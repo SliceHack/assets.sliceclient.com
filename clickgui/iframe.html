@@ -233,13 +233,13 @@
 
             switch (type) {
                 case "NumberValue":
-                    ModuleLocation[module].settings.value = parseFloat(value);
+                    ModuleLocation[module].settings[setting].value = parseFloat(value);
                     break;
                 case "BooleanValue":
-                    ModuleLocation[module].settings.value = value;
+                    ModuleLocation[module].settings[setting].value = value;
                     break;
                 case "ModeValue":
-                    ModuleLocation[module].settings.value = value;
+                    ModuleLocation[module].settings[setting].value = value;
                     break;
             }
         }
