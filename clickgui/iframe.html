@@ -195,6 +195,7 @@
         }
 
         const ModuleLocation = {}
+        let showModule = null;
 
         function addModule(category, name) {
             if (Modules[category][name]) return;
@@ -242,6 +243,11 @@
                     ModuleLocation[module].settings[setting].value = value;
                     break;
             }
+
+            // reload module
+            if(showModule == module) {
+                showModule(module);
+            }
         }
 
         function setEnabled(name, enabled) {
@@ -252,6 +258,7 @@
 
         function showModule(name) {
             if (!ModuleLocation[name]) return;
+            
             const moduleSettings = document.createElement("div");
             moduleSettings.classList.add("container", "p-selection_control", "mdui-container");
             moduleSettings.innerHTML = `
@@ -312,6 +319,7 @@
                 }
             });
             document.querySelector(".shown-module").innerHTML = moduleSettings.outerHTML;
+            this.showModule = showModule;
             mdui.mutation();
         }
 
