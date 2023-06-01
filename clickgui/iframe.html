@@ -196,6 +196,8 @@
 
         const ModuleLocation = {}
 
+        const client = window.parent.client;
+
         function addModule(category, name) {
             if (Modules[category][name]) return;
 
@@ -218,10 +220,10 @@
             document.querySelector(`.${category.toLowerCase()}`).appendChild(module);
             module.onclick = function () { showModule(name) };
             module.querySelector("input").onchange = function() {
-                client.setEnabled(name.replaceAll(" ", ""), this.checked);
+                client.setEnabled(name, this.checked);
             }
             Modules[category][name] = {
-                enabled: false,
+                enabled: client.isEnabled(name),
                 querySelector: document.querySelector(`#${name}`),
                 settings: {},
             }
@@ -242,8 +244,6 @@
                     ModuleLocation[module].settings[setting].value = value;
                     break;
             }
-            
-            if(ModuleLocation[module])
         }
 
         function setEnabled(name, enabled) {
@@ -347,12 +347,6 @@
             return ModuleLocation[module].checked = state;
         }
 
-        function updateBooleanValue(module, setting, value) {
-            if(ModuleLocation[module].settings[setting].type !== "BooleanValue") return;
-
-            ModuleLocation[module].settings[setting].value = value;
-        }
-
         function addSettingToModule(name, type, ...args) {
             if (!ModuleLocation[name]) return;
             const settingName = args[0];
@@ -397,20 +391,21 @@
             if (!ModuleLocation[name].settings[setting]) return;
             let type = e.target.id.split("-")[2];
             if (type !== ModuleLocation[name].settings[setting].type) return;
+
             switch (type) {
                 case "BooleanValue":
                     ModuleLocation[name].settings[setting].value = e.target.checked;
-                    client.setValue(name, setting.replaceAll(" ", ""), e.target.checked);
+                    client.setValue(name, setting, e.target.checked);
                     showModule(name);
                     break;
                 case "NumberValue":
                     ModuleLocation[name].settings[setting].value = parseFloat(e.target.value);
-                    client.setValue(name, setting.replaceAll(" ", ""), parseFloat(e.target.value));
+                    client.setValue(name, setting, parseFloat(e.target.value));
                     showModule(name);
                     break;
                 case "ModeValue":
                     ModuleLocation[name].settings[setting].value = e.target.options[e.target.selectedIndex].text;
-                    client.setValue(name, setting.replaceAll(" ", ""), e.target.options[e.target.selectedIndex].text);
+                    client.setValue(name, setting, e.target.options[e.target.selectedIndex].text);
                     showModule(name);
                     break;
             }
@@ -419,6 +414,7 @@
         document.querySelector("#boxheader > div > span:nth-child(5)").addEventListener("click", () => {
             client.closeGui();
         });
+
     </script>
 
 </body>
