@@ -358,8 +358,6 @@
                         type: "BooleanValue",
                         value: defaultValue,
                     };
-
-                    ModuleLocation[name].querySelector.querySelector(`#${name}-${settingName}-BooleanValue`).onchange = () => client.setValue(name, settingName, this.checked);
                     break;
                 case "ModeValue":
                     args.splice(0, 2);
@@ -370,8 +368,6 @@
                         value: defaultValue,
                         options: options,
                     };
-
-                    ModuleLocation[name].querySelector.querySelector(`#${name}-${settingName}-ModeValue`).onchange = () => client.setValue(name, settingName, this.value);
                     break;
                 case "NumberValue":
                     let min = args[2];
@@ -383,8 +379,6 @@
                         min: min,
                         max: max,
                     };
-
-                    ModuleLocation[name].querySelector.querySelector(`#${name}-${settingName}-NumberValue`).onchange = () => client.setValue(name, settingName, parseFloat(this.value));
                     break;
             }
         }
